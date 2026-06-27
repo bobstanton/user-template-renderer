@@ -1,0 +1,28 @@
+{
+  "name": "user-template-renderer",
+  "version": "1.0.0",
+  "description": "Shared renderer for trusted user-authored HTML templates",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "license": "AGPL-3.0-or-later",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepack": "npm run build",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "files": [
+    "dist",
+    "src"
+  ]
+}
