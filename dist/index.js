@@ -24,13 +24,11 @@ function renderUserHtmlTemplate(options) {
     if (typeof rendered !== 'string') {
         throw new UserTemplateRenderError('Template must return an HTML string');
     }
-    const doc = options.ownerDocument ?? container.ownerDocument;
-    const fragmentHost = doc.createElement('template');
-    fragmentHost.innerHTML = rendered;
+    const content = options.sanitize(rendered);
     if (options.clearContainer ?? true) {
         container.replaceChildren();
     }
-    container.appendChild(fragmentHost.content);
+    container.appendChild(content);
     if (options.rootClassName) {
         container.classList.add(...options.rootClassName.split(/\s+/).filter(Boolean));
     }

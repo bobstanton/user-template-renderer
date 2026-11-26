@@ -8,11 +8,11 @@ export interface RenderUserHtmlTemplateOptions {
     mode: TemplateMode;
     args: TemplateArgument[];
     container: HTMLElement;
+    sanitize: (html: string) => DocumentFragment;
     cacheKey?: string;
     clearContainer?: boolean;
     rootClassName?: string;
     setupRoot?: (container: HTMLElement) => void;
-    ownerDocument?: Document;
 }
 export declare class UserTemplateRenderError extends Error {
     constructor(message: string, options?: {
